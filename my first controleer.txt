@@ -1,0 +1,85 @@
+public class cl_myfirst 
+{
+    public integer num1 {set;get;}
+    public integer num2 {set;get;}
+    public integer num3 {set;get;}
+    public integer result {set;get;}
+    public string choice {set;get;}
+    
+    public void myfst()
+    {
+        if(choice=='g') 
+        {
+            greater();
+        }
+        else if(choice=='s')
+        {
+               smaller();
+        }
+        else 
+        {
+            result=0;
+        }
+    }
+    void greater()
+    {
+        if(num1>num2 && num1>num3)
+        {
+            result=num1;
+        }
+        else if(num2>num1 && num2>num3)
+        {
+            result=num2;
+        }
+        else
+        {
+            result=num3;
+        }
+    }
+    void smaller()
+    {
+         if(num1<num2 && num1<num3)
+        {
+            result=num1;
+        }
+        else if(num2<num1 && num2<num3)
+        {
+            result=num2;
+        }
+        else
+        {
+            result=num3;
+        }
+    }
+}           
+
+<apex:page  controller="cl_myfirst">
+    <apex:form>
+        <apex:pageBlock title="greater or smaller number calculator">
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem>
+                <apex:outputLabel value="enter first number"/>
+                <apex:inputText value="{!num1}"/>
+            </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem>
+                <apex:outputLabel value="enter second number"/>
+                <apex:inputText value="{!num2}"/>
+            </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem>
+                <apex:outputLabel value="enter third number"/>
+                <apex:inputText value="{!num3}"/>
+            </apex:pageBlockSectionItem>
+            <apex:selectRadio label="select your choice" value="{!choice}">
+                <apex:selectOption itemLabel="greater" itemValue="g"/>
+                <apex:selectOption itemLabel="smaller" itemValue="s"/>
+            </apex:selectRadio>
+            <apex:commandButton value="calculate" action="{!myfst}"/>
+            <apex:pageBlockSectionItem>
+                <apex:outputLabel value="the result is"/>
+                <apex:inputText value="{!result}"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>
